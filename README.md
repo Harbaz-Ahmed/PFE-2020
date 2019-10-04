@@ -3,6 +3,12 @@
 $ docker-compose up -d
 $ docker-compose ps
 
+# Activate apache2 config site
+$ docker exec -ti carrental bash
+$ cd /etc/apache2/sites-available
+$ a2dissite default.conf && a2ensite carrental.conf
+$ service apache2 reload
+
 # Change db connexion /incluses/config.php
 # Create a user for Mysql 'carrentaluser' // The default MySQL installation only creates the root administrative account, which has 
 unlimited privileges on the database server. In general, it’s better to avoid using the root administrative account when interacting 
