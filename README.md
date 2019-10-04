@@ -9,7 +9,7 @@ $ cd /etc/apache2/sites-available
 $ a2dissite default.conf && a2ensite carrental.conf
 $ service apache2 reload
 
-# Change db connexion /incluses/config.php
+# Change db connexion /includes/config.php
 # Create a user for Mysql 'carrentaluser' // The default MySQL installation only creates the root administrative account, which has 
 unlimited privileges on the database server. In general, it’s better to avoid using the root administrative account when interacting 
 with the database. Instead, let’s create a dedicated database user for our application’s Laravel database.
