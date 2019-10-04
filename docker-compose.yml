@@ -1,0 +1,23 @@
+version: '2'
+services:
+  carrental: 
+    image: carrental-img:v1
+    container_name: carrental
+    volumes: 
+      - ./carrental:/var/www/html/carrental
+      - ./carrental.conf:/etc/apache2/sites-available/carrental.conf
+      - ./var/log/apache2/carrental:/var/log/apache2/carrental*
+    ports:
+      - '85:80'
+      - '443:443'
+
+  carrental-db:
+    image: mariadb:latest
+    container_name: carrental-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: carrental
+      MYSQL_ROOT_PASSWORD: 123456carrental
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./sqlfile/:/docker-entrypoint-initdb.d
