@@ -13,7 +13,6 @@ services:
       - ./var/log/apache2/carrental:/var/log/apache2/carrental*
     ports:
       - '85:80'
-      - '443:443'
 
  
 
