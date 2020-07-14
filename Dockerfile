@@ -5,5 +5,6 @@ RUN apt-get install -y apache2 vim net-tools php libapache2-mod-php php-opcache 
 EXPOSE 80
 CMD apache2ctl -D FOREGROUND
 RUN  a2dissite  000-default.conf
-RUN service apache2 reload
+#RUN service apache2 reload
+RUN systemctl restart apache2 
 
