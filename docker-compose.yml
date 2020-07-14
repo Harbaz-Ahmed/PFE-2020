@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: carrental-img:v1
+    #image: carrental-img:v1
     container_name: carrental
     restart: unless-stopped
     volumes:
