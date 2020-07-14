@@ -6,5 +6,5 @@ EXPOSE 80
 CMD apache2ctl -D FOREGROUND
 RUN  a2dissite  000-default.conf
 #RUN service apache2 reload
-RUN systemctl restart apache2 
+CMD service apache2 start
 
