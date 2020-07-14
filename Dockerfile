@@ -4,6 +4,6 @@ RUN apt-get update
 RUN apt-get install -y apache2 vim net-tools php libapache2-mod-php php-opcache php-cli php-gd php-curl php-mysql 
 EXPOSE 80
 CMD apache2ctl -D FOREGROUND
-RUN  a2dissite  /etc/apache2/sites-available/000-default.conf
+RUN  a2dissite  000-default.conf
 RUN service apache2 reload
 
