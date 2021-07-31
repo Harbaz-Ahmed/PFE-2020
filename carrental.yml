@@ -7,7 +7,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: 
+      app: carrental-app
       version: blue
   template:
     metadata:
@@ -31,7 +31,7 @@ metadata:
     app: carrental-app
 spec:
   selector:
-    app: hcarrental-app
+    app: carrental-app
     version: blue
   type: NodePort
   ports:
