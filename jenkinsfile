@@ -13,7 +13,7 @@ pipeline {
       stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("hbzone/carrental-img:v1:${env.BUILD_ID}")
+                    myapp = docker.build("hbzone/carrental-img:${env.BUILD_ID}")
                 }
             }
         }
@@ -32,12 +32,18 @@ pipeline {
     
     stage('Deploy App') {
       steps {
-        script {
-          kubernetesDeploy(configs: "hellowhale.yml", kubeconfigId: "mykubeconfig")
+          sshagent(['K8S_Master']) {
+          sh "scp -o StrictHostKeyChecking=no carrental.yml ubuntu@13.36.39.128:/home/ubuntu"
+          script {
+              try{
+                  sh "ssh ubuntu@13.36.39.128 kubectl create -f ."
+              }catch(error){
+                  sh "ssh ubuntu@13.36.39.128 kubectl create -f ."
         }
       }
     }
-
+    }
+    }
   }
 
 }
