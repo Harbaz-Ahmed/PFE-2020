@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carrental
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 
+      version: blue
+  template:
+    metadata:
+      name: carrental-pod
+      labels:
+        app: carrental-app
+        version: blue
+    spec:
+      containers:
+      - name: carrental-container
+        image: hbzone/carrental-img:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: carrental-svc
+  labels:
+    app: carrental-app
+spec:
+  selector:
+    app: hcarrental-app
+    version: blue
+  type: NodePort
+  ports:
+  - nodePort: 31113
+    port: 80
+    targetPort: 80
